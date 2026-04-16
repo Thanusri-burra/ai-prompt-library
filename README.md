@@ -112,9 +112,3 @@ Fully working project with instructions
 
 
 
-1. Create file:
-``` id="kav0n9"
-README.md
-Paste above content
-Replace:
-<your-repo-link>
