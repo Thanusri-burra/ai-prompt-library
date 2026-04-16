@@ -50,7 +50,7 @@ ai-prompt-library/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone <your-repo-link>
+git clone <https://github.com/Thanusri-burra/ai-prompt-library.git>
 cd ai-prompt-library
 
 2️⃣ Backend Setup (Django)
@@ -105,7 +105,7 @@ Focus is on clean architecture and working solution
 Burra Toojitha Thanusri
 
 📌 Submission
-GitHub Repository Link
+GitHub Repository Link : https://github.com/Thanusri-burra/ai-prompt-library/
 Fully working project with instructions
 
 ---
