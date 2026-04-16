@@ -5,9 +5,15 @@ import json
 import redis
 from django.views.decorators.csrf import csrf_exempt
 
-r = redis.Redis(host="localhost", port=6379, decode_responses=True)
+# 🔐 Safe Redis setup (prevents crash on Render)
+try:
+    r = redis.Redis(host="localhost", port=6379, decode_responses=True)
+    r.ping()
+except:
+    r = None
 
 
+# 📋 GET all prompts + POST new prompt
 @csrf_exempt
 def prompt_list(request):
 
@@ -24,14 +30,23 @@ def prompt_list(request):
             complexity=body['complexity']
         )
 
-        return JsonResponse({"message": "Created", "id": prompt.id})
+        return JsonResponse({
+            "message": "Created",
+            "id": prompt.id
+        })
 
 
+# 🔍 GET single prompt + Redis view count
 def prompt_detail(request, id):
     prompt = get_object_or_404(Prompt, id=id)
 
     key = f"prompt:{id}:views"
-    views = r.incr(key)
+
+    # 🔥 Safe Redis usage
+    if r:
+        views = r.incr(key)
+    else:
+        views = 0  # fallback if Redis not available
 
     return JsonResponse({
         "id": prompt.id,
