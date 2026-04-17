@@ -1,0 +1,11 @@
+<h2>Prompt Detail</h2>
+
+<div *ngIf="prompt">
+
+  <h3>{{ prompt.title }}</h3>
+  <p>{{ prompt.content }}</p>
+
+  <p>Complexity: {{ prompt.complexity }}</p>
+  <p><b>Views: {{ prompt.view_count }}</b></p>
+
+</div>

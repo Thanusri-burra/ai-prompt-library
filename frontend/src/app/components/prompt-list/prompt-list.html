@@ -1,0 +1,11 @@
+<h2>Prompt List</h2>
+
+<a routerLink="/add">Add Prompt</a>
+
+<ul>
+  <li *ngFor="let p of prompts">
+    <a [routerLink]="['/prompts', p.id]">
+      {{ p.title }} ({{ p.complexity }})
+    </a>
+  </li>
+</ul>
